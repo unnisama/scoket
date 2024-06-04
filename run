@@ -1,0 +1,4 @@
+#!/bin/bash
+
+clang -Ofast server.c -o build/server
+clang -Ofast client.c -o build/client
