@@ -3,6 +3,10 @@
 
 file_path=$(dirname `readlink -f "$0"`)
 
+if [ ! -d "build" ]; then
+	mkdir build
+fi
+
 clang -static -Ofast $file_path/server.c -o $file_path/build/server
 clang -static -Ofast $file_path/client.c -o $file_path/build/client
 
