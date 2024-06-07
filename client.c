@@ -29,7 +29,6 @@ int main(int argc, char** argv)
 
     fcntl(0, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK);
     printf("%d\n", port);
-    char buffer[1024];
     int client_fd;
     struct sockaddr_in serv_addr;
 
