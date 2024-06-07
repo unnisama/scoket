@@ -13,7 +13,7 @@
 
 #define MAX_CONNECTIONS 20
 
-#define MAX_EVENTS 10
+#define MAX_EVENTS 20
 
 int epoll_fd;
 struct epoll_event ev, events[MAX_EVENTS];
@@ -97,9 +97,15 @@ int main(int argc, char** argv)
         }
 
         for (int i = 0; i < nfds; i++) {
+
             if (events[i].data.fd == server_fd) {
                 if ((client_socket = accept(server_fd, (struct sockaddr*)&client_addr, (socklen_t*)&client_addrlen)) < 0) {
                     perror("Accept failed!");
+                    continue;
+                }
+                if (currentfds == MAX_CONNECTIONS) {
+                    close(client_socket);
+                    printf("[+] Max Connections reached\n");
                     continue;
                 }
 

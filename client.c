@@ -118,7 +118,7 @@ int main(int argc, char** argv)
 
                 if (events[i].events & (EPOLLHUP | EPOLLRDHUP)) {
                     close(epoll_fd);
-                    printf("Server isn't working\n");
+                    printf("Server stopped working\n");
                     exit(EXIT_FAILURE);
                 }
                 int bytes_recv;
