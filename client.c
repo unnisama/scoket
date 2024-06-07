@@ -94,7 +94,7 @@ int main(int argc, char** argv)
                 int result;
 
                 while ((result = read(0, &buffer, 1024)) > 0) {
-                    if (strcmp(buffer, "q\n") == 0) {
+                    if (strcmp(buffer, "q") == 0) {
                         if (shutdown(client_fd, SHUT_WR) != -1) {
                             printf("Shuting Downing!\n");
                             close(epoll_fd);
