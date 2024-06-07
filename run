@@ -1,4 +1,11 @@
 #!/bin/bash
 
-clang -Ofast server.c -o build/server
-clang -Ofast client.c -o build/client
+
+file_path=$(dirname `readlink -f "$0"`)
+
+clang -static -Ofast $file_path/server.c -o $file_path/build/server
+clang -static -Ofast $file_path/client.c -o $file_path/build/client
+
+strip $file_path/build/server
+strip $file_path/build/client
+
